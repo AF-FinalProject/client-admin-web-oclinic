@@ -6,8 +6,6 @@ const intialState = {
 }
 
 function reducer (state= intialState, action){
-    console.log('ini reducer => store yang baru gaiz with combine')
-
     if(action.type === 'GET_ORDERS'){
         return {...state, order:action.payload, orderLoading:false}
     } else if(action.type === 'GET_ORDER_DETAIL'){

@@ -1,28 +1,6 @@
 import axios from 'axios'
 import { apiURL } from '../../helpers/apiURL'
 
-export const login = ({email, password}) => {
-    return (dispatch) => {
-        axios({
-            method: 'POST',
-            url: apiURL + '/login',
-            data: {
-                email,
-                password
-            }
-        })
-        .then(({data}) => {
-            localStorage.setItem('access_token', data.access_token)
-            dispatch({
-                type: 'GET_TOKEN',
-                payload: true
-            })
-        }).catch((err) => {
-            console.log(err)
-        });
-    }
-}
-
 export const getOrders = () => {
     return (dispatch) => {
         axios({
@@ -33,7 +11,6 @@ export const getOrders = () => {
             }
         })
         .then(({data}) => {
-            console.log(data,'ini data order dari new combine')
             dispatch({
                 type: 'GET_ORDERS',
                 payload: data.data.orders
@@ -86,23 +63,37 @@ export const deleteOrder = (id) => {
     }
 }
 
+
+export const editOrder = (data) => {
+    const { id, status_payment, status_swab } = data
+    console.log( id, status_payment, status_swab,'====================')
+    return (dispatch) => {        
+        axios({
+            method: "PUT",
+            url: apiURL + '/orders/' + id,
+            headers: {
+                access_token: localStorage.getItem('access_token')
+            },
+            data: {
+                status_payment: status_payment,
+                status_swab: status_swab
+            }
+        })
+        .then(() => {
+            dispatch(getOrders())
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+}
+
 export const resetOrderDetail = () => {
     return{
         type: 'RESET_ORDER_DETAIL'
     }
 }
 
-export const resetStore = () => {
-    return{
-        type: 'RESET_STORE',
-        payload: {
-            order: [],
-            orderLoading : true,
-            orderDetail: {},
-            orderDetailLoading: true,
-            token:false
-        }
-    }
-}
+
 
 

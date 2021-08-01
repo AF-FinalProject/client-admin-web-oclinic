@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { getOrders, deleteOrder } from '../redux/action/index'
+import { getOrders, deleteOrder } from '../redux/action/actionOrder'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Summary from '../components/Summary'
@@ -64,37 +64,21 @@ function Home(){
                                             <tr style={{backgroundColor:'red'}}>
                                                 <th scope="col">No.</th>
                                                 <th scope="col">Name</th>
-                                                <th scope="col">Age</th>
                                                 <th scope="col">Address</th>
                                                 <th scope="col">Phone Number</th>
+                                                <th scope="col">Status Payment</th>
                                                 <th scope="col">Status Swab</th>
                                                 <th scope="col"><center>Action</center></th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {data.order.map((e,id) => 
-                                            e.status_swab==="positif"?
-                                            <tr key={e.id}>
-                                                <th style={{backgroundColor:'#FEA6A6', color:'black'}} scope="row">{id+1}.</th>
-                                                <td style={{backgroundColor:'#FEA6A6', color:'black'}}>{e.User.name}</td>
-                                                <td style={{backgroundColor:'#FEA6A6', color:'black'}}>25 Th</td>
-                                                <td style={{backgroundColor:'#FEA6A6', color:'black'}}>{e.User.address}</td>
-                                                <td style={{backgroundColor:'#FEA6A6', color:'black'}}>{e.User.phone_number}</td>
-                                                <td style={{backgroundColor:'#FEA6A6', color:'black'}}>{e.status_swab}</td>
-                                                <td style={{backgroundColor:'#FEA6A6', color:'black'}}>
-                                                    <center>
-                                                    <button onClick={()=>{formEditOrder(e.id)}} className="btn btn-success btn-sm" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>edit</button>
-                                                        <button onClick={()=>{deleteOrderHandle(e.id)}} className="btn btn-danger btn-sm" style={{width:'70px', borderRadius:'20px'}}>delete</button>
-                                                    </center>
-                                                </td>
-                                            </tr>
-                                            :
+                                            {data.order.map((e,id) =>
                                             <tr key={e.id}>
                                                 <th scope="row">{id+1}.</th>
                                                 <td>{e.User.name}</td>
-                                                <td>32 Th</td>
                                                 <td>{e.User.address}</td>
                                                 <td>{e.User.phone_number}</td>
+                                                <td>{e.status_payment}</td>
                                                 <td>{e.status_swab}</td>
                                                 <td>
                                                     <center>

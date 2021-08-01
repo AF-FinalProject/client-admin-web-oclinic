@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { login } from '../redux/action/index'
+import { login } from '../redux/action/actionLogin'
 // eslint-disable-next-line
 import style from '../LoginMain.css'
 // eslint-disable-next-line
