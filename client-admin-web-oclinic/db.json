@@ -1,0 +1,72 @@
+{   "order": [
+  {
+      "id": 1,
+      "User": {
+          "nik": "31729381922321",
+          "name": "Rendy",
+          "dob": "2020-01-01",
+          "email": "rendy@gmail.com",
+          "phone_number": "08123456789",
+          "address": "Bali"
+      },
+      "status_payment": false,
+      "status_swab": "menunggu",
+      "type_swab": "PCR",
+      "date_swab":"2021-07-29",
+      "Location": {
+          "latitude": "",
+          "longtitude": ""
+      },
+      "LocationLog": {
+          "latitude": "",
+          "longtitude": ""
+      }
+  },
+  {
+      "id": 2,
+      "User": {
+          "nik": "31729381922323",
+          "name": "Aisyah",
+          "dob": "1985-04-20",
+          "email": "aisyah@gmail.com",
+          "phone_number":"08123456788",
+          "address": "Bogor"
+      },
+      "status_payment": false,
+      "status_swab": "positif",
+      "type_swab": "PCR",
+      "date_swab":"2021-07-30",
+      "Location": {
+          "latitude": "",
+          "longtitude": ""
+      },
+      "LocationLog": {
+          "latitude": "",
+          "longtitude": ""
+      }
+  },
+  {
+      "id": 3,
+      "User": {
+          "nik": "31729381922322",
+          "name": "Ade",
+          "dob": "1980-12-31",
+          "email": "ade@gmail.com",
+          "phone_number":"08123456787",
+          "address": "Jakarta"
+      },
+      "status_payment": false,
+      "status_swab": "menunggu",
+      "type_swab": "PCR",
+      "date_swab":"2021-07-28",
+      "Location": {
+          "latitude": "",
+          "longtitude": ""
+      },
+      "LocationLog": {
+          "latitude": "",
+          "longtitude": ""
+      }
+  }
+]
+}
