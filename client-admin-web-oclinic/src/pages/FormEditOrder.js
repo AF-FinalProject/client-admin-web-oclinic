@@ -117,7 +117,7 @@ function DetailOrder () {
                                                     <select className="form-control" defaultValue={dataOrder.status_swab} ref={inputStatusSwab}>
                                                         <option>-- {dataOrder.status_swab} --</option>
                                                         <option ref={inputStatusSwab}>Menunggu</option>
-                                                        <option ref={inputStatusSwab}>Postif</option>
+                                                        <option ref={inputStatusSwab}>Positif</option>
                                                         <option ref={inputStatusSwab}>Negatif</option>
                                                     </select>
                                                 </div>

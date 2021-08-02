@@ -13,9 +13,13 @@ function Home(){
     const data = useSelector((state) => state.home)
     const dispatch = useDispatch()
     const history = useHistory()
-    
+    console.log(data,"======= ini data order")
     useEffect(()=>{
-        dispatch(getOrders())
+        if(localStorage.getItem('access_token')){
+            dispatch(getOrders())
+        } else {
+            history.push('/login')
+        }
         // eslint-disable-next-line
     },[])
 
@@ -68,6 +72,7 @@ function Home(){
                                                 <th scope="col">Phone Number</th>
                                                 <th scope="col">Status Payment</th>
                                                 <th scope="col">Status Swab</th>
+                                                <th scope="col">Status Isoman</th>
                                                 <th scope="col"><center>Action</center></th>
                                             </tr>
                                             </thead>
@@ -80,6 +85,13 @@ function Home(){
                                                 <td>{e.User.phone_number}</td>
                                                 <td>{e.status_payment}</td>
                                                 <td>{e.status_swab}</td>
+                                                {e.status_swab==='Positif'?
+                                                <td>Isoman
+                                                    <button className='btn btn-danger btn-sm'>warning</button>
+                                                </td>
+                                                :
+                                                <td>-</td>
+                                                }
                                                 <td>
                                                     <center>
                                                         <button onClick={()=>{formEditOrder(e.id)}} className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>edit</button>

@@ -25,8 +25,7 @@ function Login(){
 
     const onSubmitHandle = (e) => {
         e.preventDefault()
-        dispatch(login(input))
-        history.push('/')
+        dispatch(login(input, history))
     }
 
     return(
