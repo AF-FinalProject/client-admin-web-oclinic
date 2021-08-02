@@ -5,6 +5,7 @@ import PageNotFound from './components/PageNotFound'
 import store from './redux/store'
 import FormEditOrder from './pages/FormEditOrder'
 import Login from './pages/Login'
+import Customer from './pages/Customer'
 import './App.css';
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
 
             <Route path="/" exact>
               <Home/>
+            </Route>
+
+            <Route path="/customer" exact>
+              <Customer/>
             </Route>
             
             <Route path="/FormEditOrder/:id" exact >

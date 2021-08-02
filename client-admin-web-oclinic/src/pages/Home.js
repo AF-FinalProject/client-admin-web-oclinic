@@ -10,7 +10,7 @@ import Footer from '../components/Footer'
 
 function Home(){
 
-    const data = useSelector((state) => state.home)
+    const data = useSelector((state) => state.order)
     const dispatch = useDispatch()
     const history = useHistory()
     console.log(data,"======= ini data order")
@@ -45,13 +45,13 @@ function Home(){
                             <div className="col-12">
                                 <div className="QA_section">
                                     <div className="white_box_tittle list_header">
-                                        <h4>List Pasien</h4>
+                                        <h4>List Order</h4>
                                         <div className="box_right d-flex lms_block">
                                             <div className="serach_field_2">
                                             <div className="search_inner">
                                                 <form>
                                                     <div className="search_field">
-                                                        <input type="text" placeholder="Search Pasien here..."/>
+                                                        <input type="text" placeholder="Search Order here..."/>
                                                     </div>
                                                     <button type="submit"> <i className="ti-search"></i> </button>
                                                 </form>

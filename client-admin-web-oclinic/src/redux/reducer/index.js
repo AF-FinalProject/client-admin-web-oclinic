@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import home from './home'
+import order from './orderReducer.js'
+import customer from './customerReducer.js'
 
 const combinedReducers = combineReducers({
-    home
+    order, customer
 })
 
 export default combinedReducers

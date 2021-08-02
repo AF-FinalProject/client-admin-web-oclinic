@@ -19,15 +19,15 @@ function Sidebar(){
                 <ul id="sidebar_menu">      
                     <li className="mm-active">
                         <Link to="/" className="has-arrow">
-                            <img src={LogoDashboard} alt="asdasd"/>
+                            <img src={LogoDashboard} alt="logo-dashboard"/>
                             <span>Dashboard</span>
                         </Link>
                     </li>
                     <li className="mm-active">
-                        <a className="has-arrow" href="asd">
-                            <img src={LogoDashboard} alt="asdasd"/>
-                            <span>Data Order</span>
-                        </a>
+                        <Link to="/customer" className="has-arrow">
+                            <img src={LogoDashboard} alt="logo-customer"/>
+                            <span>Data Customer</span>
+                        </Link>
                     </li>
                 </ul>
             </nav>
