@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { getOrders, deleteOrder } from '../redux/action/actionOrder'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
@@ -90,11 +90,11 @@ function Customer(){
                                               <td>{e.address}</td>
                                               <td>{e.phone_number}</td>
                                               <td>{e.email}</td>
-                                              <td>{e.dob}</td>
+                                              <td>{new Date(e.dob).toISOString().replace(/T.*/,'').split('-').reverse().join('-')}</td>
                                               <td>
                                                   <center>
                                                       {/* <button onClick={()=>{formEditOrder(e.id)}} className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>edit</button> */}
-                                                      <button className="btn btn-danger btn-sm mb-1" style={{width:'70px', borderRadius:'20px'}}>View</button>
+                                                      <Link to={{ pathname: 'order/'+e.id}}><button className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>View</button></Link>
                                                   </center>
                                               </td>
                                           </tr>
