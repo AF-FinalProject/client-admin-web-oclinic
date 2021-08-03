@@ -41,7 +41,7 @@ function Login(){
                                 <input type="email" className="form-control" name="email" onChange={(e)=>{onChangeHandle(e)}} placeholder="Email" style={{height:'85px', borderRadius:'15px', paddingLeft:'40px'}} />
                             </div>
                             <div className="form-group">
-                                <input type="text" className="form-control" name="password" onChange={(e)=>{onChangeHandle(e)}} placeholder="Password" style={{height:'85px', borderRadius:'15px', paddingLeft:'40px'}} />
+                                <input type="password" className="form-control" name="password" onChange={(e)=>{onChangeHandle(e)}} placeholder="Password" style={{height:'85px', borderRadius:'15px', paddingLeft:'40px'}} />
                             </div>
                             <div className="container-login100-form-btn mt-2">
                                 <button type="submit" className="login100-form-btn">

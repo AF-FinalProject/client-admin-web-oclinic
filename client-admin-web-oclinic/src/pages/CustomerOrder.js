@@ -1,35 +1,39 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams, Link } from "react-router-dom"
 import { getOrders, deleteOrder } from '../redux/action/actionOrder'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Summary from '../components/Summary'
 import Footer from '../components/Footer'
+import { getCustomerOrders } from "../redux/action/actionCustomer"
 
 
-function Home(){
-
-    const data = useSelector((state) => state.home)
+function CustomerOrder(){
+    const params = useParams()
+    const data = useSelector((state) => state.customer)
     const dispatch = useDispatch()
     const history = useHistory()
-    console.log(data,"======= ini data order")
+    console.log(data,"======= ini data customer order")
     useEffect(()=>{
         if(localStorage.getItem('access_token')){
-            dispatch(getOrders())
+            dispatch(getCustomerOrders(params.id))
         } else {
             history.push('/login')
         }
         // eslint-disable-next-line
     },[])
 
-    const formEditOrder = (id) => {
-        history.push('/FormEditOrder/'+id)
-    }
-
-    const deleteOrderHandle = (id) => {
-        dispatch(deleteOrder(id))
-    }
+    if (data.customerOrdersLoading) 
+    return (
+      <>
+        <div className="d-flex align-items-center justify-content-center">
+          <div className="spinner-border" role="status" style={{width: '5rem', height: '5rem'}}>
+            <span className="sr-only"></span>
+          </div>
+        </div>
+      </>
+    )
 
     return(
         <>
@@ -45,13 +49,13 @@ function Home(){
                             <div className="col-12">
                                 <div className="QA_section">
                                     <div className="white_box_tittle list_header">
-                                        <h4>List Pasien</h4>
+                                        <h4>List Order</h4>
                                         <div className="box_right d-flex lms_block">
                                             <div className="serach_field_2">
                                             <div className="search_inner">
                                                 <form>
                                                     <div className="search_field">
-                                                        <input type="text" placeholder="Search Pasien here..."/>
+                                                        <input type="text" placeholder="Search Order here..."/>
                                                     </div>
                                                     <button type="submit"> <i className="ti-search"></i> </button>
                                                 </form>
@@ -67,9 +71,9 @@ function Home(){
                                             <thead>
                                             <tr style={{backgroundColor:'red'}}>
                                                 <th scope="col">No.</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Tanggal Daftar</th>
+                                                <th scope="col">Tanggal Swab</th>
+                                                <th scope="col">Jenis Swab</th>
                                                 <th scope="col">Status Payment</th>
                                                 <th scope="col">Status Swab</th>
                                                 <th scope="col">Status Isoman</th>
@@ -77,25 +81,28 @@ function Home(){
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {data.order.map((e,id) =>
+                                            {data.customerOrders.map((e,id) =>
                                             <tr key={e.id}>
                                                 <th scope="row">{id+1}.</th>
-                                                <td>{e.User.name}</td>
-                                                <td>{e.User.address}</td>
-                                                <td>{e.User.phone_number}</td>
+                                                <td>{new Date(e.createdAt).toISOString().replace(/T.*/,'').split('-').reverse().join('-')}</td>
+                                                <td>{new Date(e.date_swab).toISOString().replace(/T.*/,'').split('-').reverse().join('-')}</td>
+                                                <td>{e.type_swab}</td>
                                                 <td>{e.status_payment}</td>
                                                 <td>{e.status_swab}</td>
-                                                {e.status_swab==='Positif'?
+                                                {e.Live_Tracking?
                                                 <td>Isoman
-                                                    <button className='btn btn-danger btn-sm'>warning</button>
+                                                  {e.Location_Logs?
+                                                    <Link to={{ pathname: 'location/'+e.id}}><button className='btn btn-danger btn-sm' style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>Warning</button></Link>
+                                                    :
+                                                    null}
                                                 </td>
                                                 :
                                                 <td>-</td>
                                                 }
                                                 <td>
                                                     <center>
-                                                        <button onClick={()=>{formEditOrder(e.id)}} className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>edit</button>
-                                                        <button onClick={()=>{deleteOrderHandle(e.id)}} className="btn btn-danger btn-sm mb-1" style={{width:'70px', borderRadius:'20px'}}>delete</button>
+                                                        {/* <button onClick={()=>{formEditOrder(e.id)}} className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>edit</button>
+                                                        <button onClick={()=>{deleteOrderHandle(e.id)}} className="btn btn-danger btn-sm mb-1" style={{width:'70px', borderRadius:'20px'}}>delete</button> */}
                                                     </center>
                                                 </td>
                                             </tr>
@@ -120,4 +127,4 @@ function Home(){
     )
 }
 
-export default Home
+export default CustomerOrder

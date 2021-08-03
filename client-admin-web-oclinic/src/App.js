@@ -1,10 +1,13 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import Home from './pages/Home';
+import Order from './pages/Order';
 import PageNotFound from './components/PageNotFound'
 import store from './redux/store'
 import FormEditOrder from './pages/FormEditOrder'
 import Login from './pages/Login'
+import Customer from './pages/Customer'
+import CustomerOrder from './pages/CustomerOrder'
+import Location from './pages/Location'
 import './App.css';
 
 function App() {
@@ -19,7 +22,19 @@ function App() {
             </Route>
 
             <Route path="/" exact>
-              <Home/>
+              <Customer/>
+            </Route>
+
+            <Route path="/order" exact>
+              <Order/>
+            </Route>
+
+            <Route path="/order/:id" exact>
+              <CustomerOrder/>
+            </Route>
+
+            <Route path="/order/location/:id" exact>
+              <Location/>
             </Route>
             
             <Route path="/FormEditOrder/:id" exact >
