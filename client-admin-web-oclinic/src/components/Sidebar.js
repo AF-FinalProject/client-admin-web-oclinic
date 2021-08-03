@@ -24,9 +24,9 @@ function Sidebar(){
                         </Link>
                     </li>
                     <li className="mm-active">
-                        <Link to="/customer" className="has-arrow">
+                        <Link to="/order" className="has-arrow">
                             <img src={LogoDashboard} alt="logo-customer"/>
-                            <span>Data Customer</span>
+                            <span>Data Order</span>
                         </Link>
                     </li>
                 </ul>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory, useParams, Link } from "react-router-dom"
 import { getOrders, deleteOrder } from '../redux/action/actionOrder'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
@@ -89,9 +89,12 @@ function CustomerOrder(){
                                                 <td>{e.type_swab}</td>
                                                 <td>{e.status_payment}</td>
                                                 <td>{e.status_swab}</td>
-                                                {e.status_swab==='Positif'?
+                                                {e.Live_Tracking?
                                                 <td>Isoman
-                                                    <button className='btn btn-danger btn-sm'>warning</button>
+                                                  {e.Location_Logs?
+                                                    <Link to={{ pathname: 'location/'+e.id}}><button className='btn btn-danger btn-sm' style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>Warning</button></Link>
+                                                    :
+                                                    null}
                                                 </td>
                                                 :
                                                 <td>-</td>

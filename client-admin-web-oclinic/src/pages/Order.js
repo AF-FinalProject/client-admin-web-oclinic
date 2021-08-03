@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { getOrders, deleteOrder } from '../redux/action/actionOrder'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
@@ -8,7 +8,7 @@ import Summary from '../components/Summary'
 import Footer from '../components/Footer'
 
 
-function Home(){
+function Order(){
 
     const data = useSelector((state) => state.order)
     const dispatch = useDispatch()
@@ -85,9 +85,12 @@ function Home(){
                                                 <td>{e.User.phone_number}</td>
                                                 <td>{e.status_payment}</td>
                                                 <td>{e.status_swab}</td>
-                                                {e.status_swab==='Positif'?
+                                                {e.Live_Tracking?
                                                 <td>Isoman
-                                                    <button className='btn btn-danger btn-sm'>warning</button>
+                                                  {e.Location_Logs?
+                                                    <Link to={{ pathname: 'order/location/'+e.id}}><button className='btn btn-danger btn-sm' style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>Warning</button></Link>
+                                                    :
+                                                    null}
                                                 </td>
                                                 :
                                                 <td>-</td>
@@ -120,4 +123,4 @@ function Home(){
     )
 }
 
-export default Home
+export default Order
