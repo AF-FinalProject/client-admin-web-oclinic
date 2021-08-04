@@ -42,3 +42,21 @@ export const getCustomerOrders = (id) => {
         })
     }
 }
+
+export const deleteCustomerOrder = (id, custId) => {
+    return (dispatch) => {
+        axios({
+            method: "DELETE",
+            url: apiURL + '/orders/' + id,
+            headers: {
+                access_token: localStorage.getItem('access_token')
+            }
+        })
+        .then(() => {
+            dispatch(getCustomerOrders(custId))
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+}

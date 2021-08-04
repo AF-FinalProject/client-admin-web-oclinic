@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Summary from '../components/Summary'
 import Footer from '../components/Footer'
-import { getCustomerOrders } from "../redux/action/actionCustomer"
+import { getCustomerOrders, deleteCustomerOrder } from "../redux/action/actionCustomer"
 
 
 function CustomerOrder(){
@@ -23,6 +23,14 @@ function CustomerOrder(){
         }
         // eslint-disable-next-line
     },[])
+
+    const formEditOrder = (id) => {
+        history.push('/FormEditOrder/'+id)
+    }
+
+    const deleteOrderHandle = (id) => {
+        dispatch(deleteCustomerOrder(id, params.id))
+    }
 
     if (data.customerOrdersLoading) 
     return (
@@ -91,7 +99,7 @@ function CustomerOrder(){
                                                 <td>{e.status_swab}</td>
                                                 {e.Live_Tracking?
                                                 <td>Isoman
-                                                  {e.Location_Logs?
+                                                  {e.Location_Logs.length > 0?
                                                     <Link to={{ pathname: 'location/'+e.id}}><button className='btn btn-danger btn-sm' style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>Warning</button></Link>
                                                     :
                                                     null}
@@ -101,8 +109,8 @@ function CustomerOrder(){
                                                 }
                                                 <td>
                                                     <center>
-                                                        {/* <button onClick={()=>{formEditOrder(e.id)}} className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>edit</button>
-                                                        <button onClick={()=>{deleteOrderHandle(e.id)}} className="btn btn-danger btn-sm mb-1" style={{width:'70px', borderRadius:'20px'}}>delete</button> */}
+                                                        <button onClick={()=>{formEditOrder(e.id)}} className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>edit</button>
+                                                        <button onClick={()=>{deleteOrderHandle(e.id)}} className="btn btn-danger btn-sm mb-1" style={{width:'70px', borderRadius:'20px'}}>delete</button>
                                                     </center>
                                                 </td>
                                             </tr>

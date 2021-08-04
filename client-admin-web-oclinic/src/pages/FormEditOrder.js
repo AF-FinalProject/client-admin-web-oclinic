@@ -12,8 +12,8 @@ function DetailOrder () {
     const params = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
-    const dataOrder = useSelector((state) => state.home.orderDetail)
-    const loading = useSelector((state) => state.home.orderDetailLoading)
+    const dataOrder = useSelector((state) => state.order.orderDetail)
+    const loading = useSelector((state) => state.order.orderDetailLoading)
 
     useEffect(()=>{
         dispatch(getOrderDetail(params.id))
