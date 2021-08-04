@@ -55,11 +55,6 @@ function Location(){
                   <div className="container-fluid p-0">
                       <div className="row justify-content-center">
                           <Summary/>
-                          {position.latitude || position.longitude ?
-                          <div dangerouslySetInnerHTML={{ __html: `<iframe src='https://www.google.com/maps?q=${position.latitude},${position.longitude}&hl=es;z=14&output=embed' width='600' height='450' style='border:0' allowfullscreen loading='lazy'/>`}} />
-                          :
-                          null
-                          }
                           {/* table End */}
                           <div className="col-12">
                               <div className="QA_section">
@@ -100,7 +95,6 @@ function Location(){
                                               <td>
                                                   <center>
                                                       <button onClick={()=>{viewMap(e.latitude, e.longitude)}} className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>View Maps</button>
-                                                      {/* <Link to={{ pathname: 'order/'+e.id}}><button className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>View</button></Link> */}
                                                   </center>
                                               </td>
                                           </tr>
@@ -115,6 +109,13 @@ function Location(){
 
                       </div>
                   </div>
+              </div>
+              <div className="row justify-content-center">
+
+              {position.latitude && position.longitude ?
+                <div dangerouslySetInnerHTML={{ __html: `<iframe src='https://www.google.com/maps?q=${position.latitude},${position.longitude}&hl=es;z=14&output=embed' width='600' height='450' style='border:0' allowfullscreen loading='lazy'/>`}} />
+                :
+                null}
               </div>
               {/* body end*/}
               <Footer/>

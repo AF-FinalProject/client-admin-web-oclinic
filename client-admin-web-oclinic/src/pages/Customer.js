@@ -93,8 +93,7 @@ function Customer(){
                                               <td>{new Date(e.dob).toISOString().replace(/T.*/,'').split('-').reverse().join('-')}</td>
                                               <td>
                                                   <center>
-                                                      {/* <button onClick={()=>{formEditOrder(e.id)}} className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>edit</button> */}
-                                                      <Link to={{ pathname: 'order/'+e.id}}><button className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>View</button></Link>
+                                                      <Link to={{ pathname: 'order/'+e.id}}><button className="btn btn-success btn-sm mb-1" style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>Orders</button></Link>
                                                   </center>
                                               </td>
                                           </tr>

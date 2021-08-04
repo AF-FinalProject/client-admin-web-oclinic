@@ -87,7 +87,7 @@ function Order(){
                                                 <td>{e.status_swab}</td>
                                                 {e.Live_Tracking?
                                                 <td>Isoman
-                                                  {e.Location_Logs?
+                                                  {e.Location_Logs.length > 0?
                                                     <Link to={{ pathname: 'order/location/'+e.id}}><button className='btn btn-danger btn-sm' style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>Warning</button></Link>
                                                     :
                                                     null}
