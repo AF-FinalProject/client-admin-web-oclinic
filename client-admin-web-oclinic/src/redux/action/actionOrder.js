@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { apiURL } from '../../helpers/apiURL'
+import Toastify from 'toastify-js'
 
 export const getOrders = () => {
     return (dispatch) => {
@@ -55,6 +56,13 @@ export const deleteOrder = (id) => {
             }
         })
         .then(() => {
+            Toastify({
+                text: 'Success deleted data order',
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'right',
+                backgroundColor: '#3CB371'
+            }).showToast()
             dispatch(getOrders())
         })
         .catch((err)=>{
@@ -65,8 +73,10 @@ export const deleteOrder = (id) => {
 
 
 export const editOrder = (data) => {
-    const { id, status_payment, status_swab } = data
-    console.log( id, status_payment, status_swab,'====================')
+    const { id, 
+            // status_payment, 
+            status_swab } = data
+    // console.log( id, status_payment, status_swab,'====================')
     return (dispatch) => {        
         axios({
             method: "PUT",
@@ -75,11 +85,18 @@ export const editOrder = (data) => {
                 access_token: localStorage.getItem('access_token')
             },
             data: {
-                status_payment: status_payment,
+                // status_payment: status_payment,
                 status_swab: status_swab
             }
         })
         .then(() => {
+            Toastify({
+                text: 'Success update data order',
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'right',
+                backgroundColor: '#3CB371'
+            }).showToast()
             dispatch(getOrders())
         })
         .catch((err)=>{

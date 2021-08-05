@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, Link } from "react-router-dom"
-import { getOrders, deleteOrder } from '../redux/action/actionOrder'
+// import { getOrders, deleteOrder } from '../redux/action/actionOrder'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Summary from '../components/Summary'
@@ -51,21 +51,6 @@ function Customer(){
                               <div className="QA_section">
                                   <div className="white_box_tittle list_header">
                                       <h4>List Customer</h4>
-                                      <div className="box_right d-flex lms_block">
-                                          <div className="serach_field_2">
-                                          <div className="search_inner">
-                                              <form>
-                                                  <div className="search_field">
-                                                      <input type="text" placeholder="Search Customer here..."/>
-                                                  </div>
-                                                  <button type="submit"> <i className="ti-search"></i> </button>
-                                              </form>
-                                          </div>
-                                          </div>
-                                          <div className="add_button ml-10">
-                                          <a href="sa" data-toggle="modal" data-target="#addcategory" className="btn_1">Search</a>
-                                          </div>
-                                      </div>
                                   </div>
                                   <div className="QA_table mb_30">
                                       <table className="table lms_table_active" style={{borderRadius:'40px 40px 5px 5px'}}>

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { apiURL } from '../../helpers/apiURL'
+import { getOrders } from './actionOrder'
 
 export const getCustomers = () => {
     return (dispatch) => {
@@ -15,6 +16,7 @@ export const getCustomers = () => {
                 type: 'GET_CUSTOMERS',
                 payload: data.data.customers
             })
+            dispatch(getOrders())
         })
         .catch((err)=>{
             console.log(err)

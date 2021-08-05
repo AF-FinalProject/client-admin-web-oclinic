@@ -1,6 +1,16 @@
 import React from "react"
+import { useSelector } from "react-redux"
 
 function Summary() {
+
+    const sumCustomer = useSelector((state)=> state.customer.customers)
+    const sumOrder = useSelector((state) => state.order.order)
+    const sumPositif = sumOrder.filter(e => e.status_swab === 'positif')
+    const sumNegatif = sumOrder.filter(e => e.status_swab === 'negatif')
+
+    console.log(sumOrder,'ini data total')
+    console.log(sumPositif,'ini data total')
+
     return(
         <>
             {/* Summary */}
@@ -15,8 +25,8 @@ function Summary() {
                                             <img src="img/icon/man.svg" alt=""/>
                                         </div>
                                         <div className="count_content">
-                                            <h3><span className="counter">520</span></h3>
-                                            <p>TOTAL</p>
+                                            <h3><span className="counter">{sumCustomer.length}</span></h3>
+                                            <p>TOTAL CUSTOMER</p>
                                         </div>
                                     </div>
                                     <div className="single_quick_activity d-flex">
@@ -24,7 +34,16 @@ function Summary() {
                                             <img src="img/icon/man.svg" alt=""/>
                                         </div>
                                         <div className="count_content">
-                                            <h3><span className="counter">520</span></h3>
+                                            <h3><span className="counter">{sumOrder.length}</span></h3>
+                                            <p>TOTAL ORDER</p>
+                                        </div>
+                                    </div>
+                                    <div className="single_quick_activity d-flex">
+                                        <div className="icon">
+                                            <img src="img/icon/man.svg" alt=""/>
+                                        </div>
+                                        <div className="count_content">
+                                            <h3><span className="counter">{sumPositif.length}</span></h3>
                                             <p>POSITIF</p>
                                         </div>
                                     </div>
@@ -33,17 +52,8 @@ function Summary() {
                                             <img src="img/icon/man.svg" alt=""/>
                                         </div>
                                         <div className="count_content">
-                                            <h3><span className="counter">520</span></h3>
+                                            <h3><span className="counter">{sumNegatif.length}</span></h3>
                                             <p>NEGATIF</p>
-                                        </div>
-                                    </div>
-                                    <div className="single_quick_activity d-flex">
-                                        <div className="icon">
-                                            <img src="img/icon/man.svg" alt=""/>
-                                        </div>
-                                        <div className="count_content">
-                                            <h3><span className="counter">520</span></h3>
-                                            <p>SEMBUH</p>
                                         </div>
                                     </div>
                                 </div>

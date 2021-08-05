@@ -28,7 +28,7 @@ function Navbar(){
                             <div className="header_right d-flex justify-content-between align-items-center">
                                 <div className="header_notification_warp d-flex align-items-center">
                                     <li>
-                                        <img src="img/icon/bell.svg" alt="" onClick={()=>{logout()}} style={{cursor:'pointer'}} />
+                                        <button className="btn btn-danger" onClick={()=>{logout()}} style={{cursor:'pointer'}}>Log Out</button>
                                     </li>
                                 </div>
                             </div>

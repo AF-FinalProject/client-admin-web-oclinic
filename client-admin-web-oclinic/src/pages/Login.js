@@ -34,8 +34,8 @@ function Login(){
                 <div className="container-login100">
                     <div className="wrap-login100">
                         <form className="login100-form validate-form" id="formLogin" onSubmit={(e)=>{onSubmitHandle(e)}}>
-                            <span className="login100-form-title p-b-43">
-                                Login untuk masuk..
+                            <span className="login100-form-title p-b-43" style={{fontFamily: 'Atkinson Hyperlegible'}}>
+                                Login Admin Oclinic
                             </span>
                             <div className="form-group">
                                 <input type="email" className="form-control" name="email" onChange={(e)=>{onChangeHandle(e)}} placeholder="Email" style={{height:'85px', borderRadius:'15px', paddingLeft:'40px'}} />
@@ -44,7 +44,7 @@ function Login(){
                                 <input type="password" className="form-control" name="password" onChange={(e)=>{onChangeHandle(e)}} placeholder="Password" style={{height:'85px', borderRadius:'15px', paddingLeft:'40px'}} />
                             </div>
                             <div className="container-login100-form-btn mt-2">
-                                <button type="submit" className="login100-form-btn">
+                                <button type="submit" className="login100-form-btn" style={{fontFamily: 'Atkinson Hyperlegible'}}>
                                     Login
                                 </button>
                             </div>

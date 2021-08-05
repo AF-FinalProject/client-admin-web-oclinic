@@ -26,7 +26,7 @@ function DetailOrder () {
     const inputEmail = useRef()
     const inputPhoneNumber = useRef()
     const inputAddress = useRef()
-    const inputStatusPayment = useRef()
+    // const inputStatusPayment = useRef()
     const inputStatusSwab = useRef()
     const inputTypeSwab = useRef()
     const inputDateSwab = useRef()
@@ -35,7 +35,7 @@ function DetailOrder () {
         e.preventDefault()
         let newOrder = {
             id: params.id,
-            status_payment: inputStatusPayment.current.value?inputStatusPayment.current.value:inputStatusPayment.current.defaultValue,
+            // status_payment: inputStatusPayment.current.value?inputStatusPayment.current.value:inputStatusPayment.current.defaultValue,
             status_swab: inputStatusSwab.current.value?inputStatusSwab.current.value:inputStatusSwab.current.defaultValue
         }
         console.log(newOrder)
@@ -106,11 +106,12 @@ function DetailOrder () {
                                                 
                                                 <div className="form-group">
                                                     <label >Status Payment</label>
-                                                    <select className="form-control" defaultValue={dataOrder.status_payment} ref={inputStatusPayment}>
+                                                    <input type="text" className="form-control" disabled defaultValue={dataOrder.status_payment} placeholder="Enter Type Swab"/>
+                                                    {/* <select className="form-control" disabled defaultValue={dataOrder.status_payment} ref={inputStatusPayment}>
                                                         <option>-- {dataOrder.status_payment} --</option>
                                                         <option ref={inputStatusPayment}>true</option>
                                                         <option ref={inputStatusPayment}>false</option>
-                                                    </select>
+                                                    </select> */}
                                                 </div>
                                                 <div className="form-group">
                                                     <label >Status Swab</label>

@@ -4,7 +4,7 @@ import { useHistory, Link } from "react-router-dom"
 import { getOrders, deleteOrder } from '../redux/action/actionOrder'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
-import Summary from '../components/Summary'
+// import Summary from '../components/Summary'NPM
 import Footer from '../components/Footer'
 
 
@@ -30,7 +30,7 @@ function Order(){
     const deleteOrderHandle = (id) => {
         dispatch(deleteOrder(id))
     }
-
+    
     return(
         <>
             <Navbar/>
@@ -40,27 +40,12 @@ function Order(){
                 <div className="main_content_iner ">
                     <div className="container-fluid p-0">
                         <div className="row justify-content-center">
-                            <Summary/>
+                            {/* <Summary/> */}
                             {/* table End */}
-                            <div className="col-12">
+                            <div className="col-12" style={{marginTop:'100px'}}>
                                 <div className="QA_section">
                                     <div className="white_box_tittle list_header">
                                         <h4>List Order</h4>
-                                        <div className="box_right d-flex lms_block">
-                                            <div className="serach_field_2">
-                                            <div className="search_inner">
-                                                <form>
-                                                    <div className="search_field">
-                                                        <input type="text" placeholder="Search Order here..."/>
-                                                    </div>
-                                                    <button type="submit"> <i className="ti-search"></i> </button>
-                                                </form>
-                                            </div>
-                                            </div>
-                                            <div className="add_button ml-10">
-                                            <a href="sa" data-toggle="modal" data-target="#addcategory" className="btn_1">Search</a>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div className="QA_table mb_30">
                                         <table className="table lms_table_active" style={{borderRadius:'40px 40px 5px 5px'}}>
@@ -88,7 +73,7 @@ function Order(){
                                                 {e.Live_Tracking?
                                                 <td>Isoman
                                                   {e.Location_Logs.length > 0?
-                                                    <Link to={{ pathname: 'order/location/'+e.id}}><button className='btn btn-danger btn-sm' style={{marginRight:'5px', width:'70px', borderRadius:'20px'}}>Warning</button></Link>
+                                                    <Link to={{ pathname: 'location/'+e.id}}><button className='btn btn-danger btn-sm' style={{marginRight:'5px', borderRadius:'20px', fontSize:'11px'}}>Warning</button></Link>
                                                     :
                                                     null}
                                                 </td>
